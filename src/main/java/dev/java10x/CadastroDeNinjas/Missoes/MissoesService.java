@@ -10,11 +10,14 @@ public class MissoesService {
     // @Autowired // Mesmo valor de um construtor
     private MissoesRepository missoesRepository;
 
-    public MissoesService(MissoesRepository missoesRepository) {this.missoesRepository = missoesRepository;
+    // construtor
+    public MissoesService(MissoesRepository missoesRepository) {
+        this.missoesRepository = missoesRepository;
     }
 
     // Listar todos os ninjas
-     public List<MissoesModel> listarMissoes() {return missoesRepository.findAll();
+     public List<MissoesModel> listarMissoes() {
+        return missoesRepository.findAll();
     }
 
 }
