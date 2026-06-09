@@ -2,6 +2,7 @@ package dev.java10x.CadastroDeNinjas.Ninjas;
 
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,25 @@ public class NinjasService {
         return ninjaRepository.save(ninja);
     }
 
+    // Deletar ninja - Tem que ser um método VOID
+    public void deletarNinjaPorId(Long id) {
+        ninjaRepository.deleteById(id);
+    }
+
+    // Alterar Ninja
+    public NinjaModel alterarNinjaPorId(Long id, NinjaModel ninja) {
+        // Busca o ninja existente direto pelo ID
+        NinjaModel ninjaExistente = ninjaRepository.findById(id).get();
+        // Atualiza os dados básicos
+        ninjaExistente.setNome(ninja.getNome());
+        ninjaExistente.setEmail(ninja.getEmail());
+        ninjaExistente.setImgUrl(ninja.getImgUrl());
+        ninjaExistente.setIdade(ninja.getIdade());
+        // ADICIONE ESSA LINHA AQUI: atualiza também a missão vinculada
+        ninjaExistente.setMissoes(ninja.getMissoes());
+        // Salva o mesmo ninja com a missão certa de volta
+        return ninjaRepository.save(ninja);
+    }
 
 
 

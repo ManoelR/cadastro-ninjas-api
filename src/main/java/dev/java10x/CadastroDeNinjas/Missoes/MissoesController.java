@@ -23,19 +23,25 @@ public class MissoesController {
 
     // POST -- Usuário manda uma requisição para criar as missões
     @PostMapping("/criar")
-    public String criarMissao() {
-        return "Missão criada com sucesso";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missao) {
+        return missoesService.criarMissao(missao);
     }
 
-    // PUT -- Manda uma requisição para alterar as missões
-    @PutMapping("/alterar")
-    public String alterarMissao() {
-        return "Missão alterada com sucesso";
+    // Mostar missao por ID (READ)
+    @PutMapping("/listar/{id}")
+    public MissoesModel listarmissaoPorId(@PathVariable Long id) {
+        return missoesService.listarMissaoPorId(id);
+    }
+
+    // PUT -- Manda uma requisição para alterar as missões (UPDATE)
+    @PutMapping("/alterar/{id}")
+    public MissoesModel alterarMissaoPorId(@PathVariable Long id, @RequestBody MissoesModel missao) {
+        return missoesService.alterarMissaoPorId(id, missao);
     }
 
     // DELETE -- Manda uma requisição para deletar a missão
-    @DeleteMapping("/Deletar")
-    public String deletarMissao() {
-        return "Missão deletada com sucesso";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarMissaoPorId(@PathVariable Long id) {
+        missoesService.deletarMissaoPorId(id);
     }
 }
