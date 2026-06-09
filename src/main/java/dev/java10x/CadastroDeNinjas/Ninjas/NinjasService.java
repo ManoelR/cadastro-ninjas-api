@@ -39,19 +39,13 @@ public class NinjasService {
         ninjaRepository.deleteById(id);
     }
 
-    // Alterar Ninja
-    public NinjaModel alterarNinjaPorId(Long id, NinjaModel ninja) {
-        // Busca o ninja existente direto pelo ID
-        NinjaModel ninjaExistente = ninjaRepository.findById(id).get();
-        // Atualiza os dados básicos
-        ninjaExistente.setNome(ninja.getNome());
-        ninjaExistente.setEmail(ninja.getEmail());
-        ninjaExistente.setImgUrl(ninja.getImgUrl());
-        ninjaExistente.setIdade(ninja.getIdade());
-        // ADICIONE ESSA LINHA AQUI: atualiza também a missão vinculada
-        ninjaExistente.setMissoes(ninja.getMissoes());
-        // Salva o mesmo ninja com a missão certa de volta
-        return ninjaRepository.save(ninja);
+    // Atualizar Ninja
+    public NinjaModel atualizarNinja(Long id, NinjaModel ninjaAtualizado) {
+        if (ninjaRepository.existsById(id)) {
+            ninjaAtualizado.setId(id);
+            return ninjaRepository.save(ninjaAtualizado);
+        }
+        return null;
     }
 
 
