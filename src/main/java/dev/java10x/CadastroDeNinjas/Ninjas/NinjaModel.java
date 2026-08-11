@@ -40,6 +40,9 @@ public class NinjaModel {
     @JoinColumn(name = "missoes_id")  // @JoinColumn -- Vai juntar a coluna de missoes com a de ninja // missoes_id -- Foreing key ou chave estrangeira.
     private MissoesModel missoes;
 
+    @Column(name = "rank")
+    private String rank;
+
     // getters e setters
 
     public Long getId() {
@@ -88,5 +91,13 @@ public class NinjaModel {
 
     public void setMissoes(MissoesModel missoes) {
         this.missoes = missoes;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 }
