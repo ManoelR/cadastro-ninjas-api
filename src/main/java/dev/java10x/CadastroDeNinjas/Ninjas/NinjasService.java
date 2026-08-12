@@ -1,6 +1,7 @@
 package dev.java10x.CadastroDeNinjas.Ninjas;
 
 
+import ch.qos.logback.core.util.ExecutorServiceUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -10,12 +11,13 @@ import java.util.Optional;
 @Service
 public class NinjasService {
 
-   // @Autowired // Mesmo valor de inicializar um construtor // é uma boa prática não iniciar com annotation
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
     // Construtor
-    public NinjasService(NinjaRepository ninjaRepository) {
+    public NinjasService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     // Listar todos os ninjas
@@ -30,8 +32,10 @@ public class NinjasService {
     }
 
     // Criar um novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     // Deletar ninja - Tem que ser um mét0do VOID - não precisa retornar nada.
