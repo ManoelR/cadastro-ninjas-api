@@ -32,6 +32,9 @@ public class NinjaModel {
     @Column (name = "img_url")
     private String imgUrl;
 
+    @Column(name = "rank")
+    private String rank;
+
     @Column (name = "idade")
     private int idade;
 
@@ -40,8 +43,7 @@ public class NinjaModel {
     @JoinColumn(name = "missoes_id")  // @JoinColumn -- Vai juntar a coluna de missoes com a de ninja // missoes_id -- Foreing key ou chave estrangeira.
     private MissoesModel missoes;
 
-    @Column(name = "rank")
-    private String rank;
+
 
     // getters e setters
 
