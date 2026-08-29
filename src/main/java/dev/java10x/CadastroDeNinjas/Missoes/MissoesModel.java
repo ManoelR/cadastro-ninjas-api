@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.List;
 
 @Entity
@@ -13,6 +15,8 @@ import java.util.List;
 @Data // Criar os GETTERS e SETTERS automáticamente
 @NoArgsConstructor // Criar construtor sem argumentos // O Lombok faz automáticamente
 @AllArgsConstructor // Criar construtor com todos os argumentos // ^-^
+@ToString
+
 public class MissoesModel {
 
     @Id

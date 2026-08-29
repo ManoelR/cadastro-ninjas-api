@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 // JPA = Java Persistence API
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 //@Data // Criar os GETTERS e SETTERS automáticamente //Estava dando conflito e não aparecia a listados ninjas. getters e setters criados para resolver.
 //@NoArgsConstructor // Criar construtor sem argumentos // O Lombok faz automáticamente
 //@AllArgsConstructor // Criar construtor com todos os argumentos // ^-^
-
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id
