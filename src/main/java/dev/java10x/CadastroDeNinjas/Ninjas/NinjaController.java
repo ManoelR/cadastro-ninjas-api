@@ -9,7 +9,7 @@ import java.util.List;
 @RequestMapping("/ninjas")
 public class NinjaController {
 
-    private NinjasService ninjasService;
+    private final NinjasService ninjasService;
 
     // Construtor
     public NinjaController(NinjasService ninjasService) {
